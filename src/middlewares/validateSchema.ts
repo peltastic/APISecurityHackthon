@@ -13,7 +13,7 @@ const validateSchema =
     } catch (e: any) {
       return res.status(400).json({
         status: false,
-        message: e.errors.message,
+        message: e.errors[0].message,
       });
     }
   };
