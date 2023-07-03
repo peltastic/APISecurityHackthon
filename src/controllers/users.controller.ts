@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CheckEmail, CreateUser } from "../services/users.service";
+import {CheckEmail, CreateUser} from "../services/users.service";
 import { CreateUserInput } from "../middlewares/schema/users.schema";
 
 const createUser = async (

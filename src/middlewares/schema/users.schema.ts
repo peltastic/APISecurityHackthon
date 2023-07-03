@@ -8,9 +8,9 @@ export const createUserSchema = object({
     phoneNumber: string({
       required_error: "User's Phone Number is Required",
     }),
-    email: string({
+    email: string({ 
       required_error: "Email is Required",
-    }).email(),
+    }).email(), 
     password: string({
       required_error: "Password is Required",
     }).min(6, "Password too Short - should be min of 6 chars "),
