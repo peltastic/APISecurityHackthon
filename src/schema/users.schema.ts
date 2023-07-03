@@ -7,7 +7,7 @@ export const createUserSchema = object({
     }),
     phoneNumber: string({
       required_error: "User's Phone Number is Required",
-    }),
+    }).min(11, "Phone number must not be less than 11 characters"),
     email: string({
       required_error: "Email is Required",
     }).email(),
@@ -22,10 +22,10 @@ export const createUserSchema = object({
           ),
         "Password must contain minimum eight characters, at least one letter, one number and one special character:"
       ),
-    note: string().optional(),
     passwordConfirmation: string({
       required_error: "Password confirmation is required",
     }).min(8, "Password is too short - should be min 8 chars"),
+    note: string().optional(),
     companyAddress: string({
       required_error: "Company's Address is Required",
     }),
@@ -47,4 +47,4 @@ export const loginUserSchema = object({
 });
 
 export type CreateUserInput = TypeOf<typeof createUserSchema>["body"];
-export type LoginUserInput = TypeOf<typeof loginUserSchema>["body"]
+export type LoginUserInput = TypeOf<typeof loginUserSchema>["body"];
