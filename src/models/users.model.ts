@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { randomUUID } from "crypto";
+import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt"
 
 interface IUser {
@@ -9,7 +9,13 @@ interface IUser {
   note: string;
   companyAddress: string;
   password: string;
-  _id: any;
+  otp_enabled: boolean
+  otp_verified: boolean
+  otp_ascii: string
+  otp_hex: string
+  otp_base32: string
+  otp_auth_url: string
+  _id: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -18,7 +24,13 @@ const userSchema = new Schema<IUser>({
   email: { type: String, required: true },
   note: { type: String },
   companyAddress: { type: String, required: true },
-  _id: { type: "UUID", default: () => randomUUID() },
+  _id: { type: String, default: () => uuidv4()},
+  otp_ascii: {type: String},
+  otp_auth_url: {type: String},
+  otp_base32: {type: String},
+  otp_enabled: {type: Boolean, default: false},
+  otp_hex: {type: String},
+  otp_verified: {type: Boolean, default: false},
   password: { type: String, required: true, min: 6 },
 });
 

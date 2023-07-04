@@ -1,13 +1,13 @@
 import { Schema, model } from "mongoose";
-import {randomUUID} from "crypto"
+import { v4 as uuidv4 } from "uuid";
 
 interface IClient {
-    name: string,
-    phoneNumber: string,
-    email: string
-    note: string
-    companyAddress: string
-    _id: any
+  name: string;
+  phoneNumber: string;
+  email: string;
+  note: string;
+  companyAddress: string;
+  _id: string;
 }
 
 const clientsSchema = new Schema<IClient>({
@@ -16,9 +16,9 @@ const clientsSchema = new Schema<IClient>({
   email: { type: String, required: true },
   note: { type: String },
   companyAddress: { type: String, required: true },
-  _id: {type: 'UUID', default: () => randomUUID()}
+  _id: { type: String, default: () => uuidv4() },
 });
 
-const ClientsModel = model<IClient>("Client", clientsSchema)
+const ClientsModel = model<IClient>("Client", clientsSchema);
 
-export default ClientsModel
+export default ClientsModel;

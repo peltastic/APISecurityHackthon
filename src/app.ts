@@ -13,8 +13,10 @@ import { rateLimiter } from "./middlewares/rateLimiter.middleware";
 import userRoutes from "./routes/user.routes"
 import clientRoutes from "./routes/client.routes"
 import invoiceRoutes from "./routes/invoice.routes";
+import authRoutes from "./routes/auth.routes"
 
 const app = express();
+
 
 //enable cors
 app.options('*', cors()); // preflight OPTIONS; put before other routes
@@ -40,13 +42,15 @@ app.use(rateLimiter)
 
 //set up treblle
 useTreblle(app, {
-    apiKey: config.get('TREBLLE_PROJECT_ID '),
+    apiKey: config.get('TREBLLE_PROJECT_ID'),
     projectId: config.get('TREBLLE_API_KEY'),
   })
 
 app.use("/api/v1/users", userRoutes)
+app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/clients", authMiddleware, clientRoutes)
 app.use("/api/v1/invoice", authMiddleware, invoiceRoutes)
+
 
 
 

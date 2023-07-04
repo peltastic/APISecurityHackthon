@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import {randomUUID} from "crypto"
+import { v4 as uuidv4 } from "uuid";
 import { boolean, string } from "zod"
 
 interface INvoice{
@@ -13,7 +13,7 @@ interface INvoice{
     clientId: {type:String},
     hasClientPaid : boolean,
     paymentReference: string,
-    _id: any
+    _id: string
  }
 
  const invoiceSchema = new Schema<INvoice>(
@@ -28,7 +28,7 @@ interface INvoice{
     clientId:  {type: String, required: true},
     hasClientPaid : {type: Boolean, defauly:false},
     paymentReference: {type:String},
-    _id: {type: 'UUID', default: () => randomUUID()},
+    _id: {type: String, default: () => uuidv4()},
  }
  )
 

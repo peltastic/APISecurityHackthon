@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv'
+import config from "config"
 import { IPayLoad } from "../interfaces/interfaces";
 
-dotenv.config()
 
 
 export interface CustomRequest extends Request {
@@ -19,7 +18,7 @@ const authMiddleware = (req: Request, res: Response, next:NextFunction)=>{
         const bearer = bearerHeader.split(' ');
         const token = bearer[1];
     
-        const decoded = jwt.verify(token as string, process.env.JWT_TOKEN as string) as IPayLoad;
+        const decoded = jwt.verify(token as string, config.get<string>("JWT_SECRET_KEY")) as IPayLoad;
         (req as CustomRequest).user = decoded;
        // console.log(req.user);
        next()

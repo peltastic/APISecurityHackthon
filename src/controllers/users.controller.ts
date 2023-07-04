@@ -5,8 +5,7 @@ import {
   LoginUserInput,
 } from "../schema/users.schema";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import config from "config";
+import { generateJwt } from "../utils/jwt";
 
 const createUser = async (
   req: Request<{}, {}, CreateUserInput>,
@@ -62,17 +61,27 @@ const loginUser = async (
         success: false,
       });
     }
+
     const payload = {
       user_id: user?._id,
       email: user?.email,
     };
-
-    const token = jwt.sign(payload, config.get<string>("JWT_SECRET_KEY"), {
-      expiresIn: config.get("JWT_EXPIRY_TIME"),
-    });
+ 
+    const token = generateJwt(payload)
+    
+    if (user?.otp_enabled) {
+      res.status(200).json({
+        success: true,
+        message: "User Logged In Successfully",
+        otp_enabled: true,
+        email: user?.email,
+      });
+    }
     return res.status(200).json({
       success: true,
       message: "User Logged In Successfully",
+      otp_enabled: false,
+      email: user?.email,
       token,
     });
   } catch (e) {

@@ -24,3 +24,8 @@ export const FindEmail = async (email: string) => {
   const user = await UserModel.findOne({ email });
   return user;
 };
+
+export const FindUserById = async (id: string) => {
+  const user = await UserModel.findOne({_id: id})
+  return user
+}
