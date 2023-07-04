@@ -2,12 +2,21 @@ import express, {Request, Response, NextFunction} from "express";
 import config from "config";
 import ConnectDB from "./utils/connectDB";
 import cors from "cors"
+import { useTreblle } from "treblle";
+
 import errorMiddleware from "./middlewares/error.middleware";
+import authMiddleware from "./middlewares/auth.middleware"
+
+
+
+//Import routes
 import userRoutes from "./routes/user.routes"
 import clientRoutes from "./routes/client.routes"
+import invoiceRoutes from "./routes/invoice.routes";
+
 const app = express();
 
-
+//enable cors
 app.options('*', cors()); // preflight OPTIONS; put before other routes
 
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -25,7 +34,17 @@ app.use(express.json())
 
 app.use(errorMiddleware)
 
+//set up treblle
+useTreblle(app, {
+    apiKey: config.get('TREBLLE_PROJECT_ID '),
+    projectId: config.get('TREBLLE_API_KEY'),
+  })
+
 app.use("/api/v1/users", userRoutes)
-app.use("/api/v1/clients", clientRoutes)
+app.use("/api/v1/clients", authMiddleware, clientRoutes)
+app.use("/api/v1/invoice", authMiddleware, invoiceRoutes)
+
+
 
 app.listen(PORT, () => console.log(`App Listening at port ${PORT}`));
+

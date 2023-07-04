@@ -1,10 +1,11 @@
 import { Schema, model } from "mongoose"
 import {randomUUID} from "crypto"
-import { boolean } from "zod"
+import { boolean, string } from "zod"
 
 interface INvoice{
     issueDate: Date,
-    jobDesc : string,
+    invoiceName: string,
+    invoiceDesc : string,
     dueDate : Date,
     amount: Number,
     draft: boolean,
@@ -18,7 +19,8 @@ interface INvoice{
  const invoiceSchema = new Schema<INvoice>(
     {
     issueDate: {type :Date, required: true},
-    jobDesc : {type: String, required: true},
+    invoiceName: {type:String, required: true},
+    invoiceDesc : {type: String},
     dueDate : {type: Date, required: true},
     amount: {type: Number, required: true},
     draft: {type: Boolean, default: false},
