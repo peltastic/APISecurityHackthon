@@ -28,11 +28,22 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
-const PORT = config.get("PORT") || 8000;
+const PORT = config.get("PORT") || 3000;
 
 ConnectDB()
+const shouldCompress = (req: Request, res: Response) => {
+  if (req.headers['x-no-compression']) {
+    // Will not compress responses, if this header is present
+    return false;
+  }
+  // Resort to standard compression
+  return compression.filter(req, res);
+};
 
-app.use(compression())
+app.use(compression({
+  filter: shouldCompress,
+  threshold: 0
+}))
 
 app.use(express.json())
 
