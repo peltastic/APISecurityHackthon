@@ -42,8 +42,8 @@ app.use(rateLimiter)
 
 //set up treblle
 useTreblle(app, {
-    apiKey: config.get('TREBLLE_PROJECT_ID'),
-    projectId: config.get('TREBLLE_API_KEY'),
+    apiKey: config.get('TREBLLE_API_KEY'),
+    projectId: config.get('TREBLLE_PROJECT_ID'),
   })
 
 app.use("/api/v1/users", userRoutes)

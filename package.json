@@ -19,10 +19,10 @@
     "@types/jsonwebtoken": "^9.0.2",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
+    "@types/uuid": "^9.0.2",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@types/uuid": "^9.0.2",
     "all": "^0.0.0",
     "bcrypt": "^5.1.0",
     "config": "^3.3.9",
