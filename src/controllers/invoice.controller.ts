@@ -5,7 +5,6 @@ import { createInvoiceService,
   getAnInvoiceService,
   deleteInvoiceService,
   updateInvoiceService } from "../services/invoice.service";
-import { CustomRequest } from "../middlewares/auth.middleware";
 import { IPagination } from "../interfaces/interfaces";
 
 const createInvoice = async (
@@ -56,7 +55,7 @@ const getAllInvoice= async (
 };
 
 const getAnInvoice= async (req: Request, res: Response, next: NextFunction) => {
-  const id = req.params;
+  const {id} = req.params;
   try {
     const data: any = await getAnInvoiceService(id);
     return res.status(200).json({
@@ -70,12 +69,12 @@ const getAnInvoice= async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const updateInvoice = async (
-  req: Request<{}, {}, UpdateInvoiceInput>,
+  req: Request<UpdateInvoiceInput["params"], {}, UpdateInvoiceInput["body"]>,
   res: Response,
   next: NextFunction
 ) => {
   const body = req.body;
-  const id = req.params;
+  const {id} = req.params;
 
   try {
     await updateInvoiceService(body, id);

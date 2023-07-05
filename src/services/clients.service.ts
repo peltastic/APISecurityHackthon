@@ -17,7 +17,7 @@ interface IUpdateClient {
 }
 
 export const createClientService = async (body: ICreateClient) => {
-  await ClientsModel.create(body);
+  return await ClientsModel.create(body);
 };
 
 export const getAllClientsService = async (body: IPagination) => {
@@ -25,7 +25,7 @@ export const getAllClientsService = async (body: IPagination) => {
   return data;
 };
 
-export const getClientService = async (id: any) => {
+export const getClientService = async (id: string) => {
     const data = await ClientsModel.findOne({
         _id: id
     })

@@ -6,7 +6,7 @@ import { useTreblle } from "treblle";
 
 import errorMiddleware from "./middlewares/error.middleware";
 import authMiddleware from "./middlewares/auth.middleware"
-import { rateLimiter } from "./middlewares/rateLimiter.middleware";
+// import { rateLimiter } from "./middlewares/rateLimiter.middleware";
 import compression from "compression"
 
 //Import routes
@@ -50,7 +50,7 @@ app.use(express.json())
 app.use(errorMiddleware)
 
 //enable rate Limit
-app.use(rateLimiter)
+// app.use(rateLimiter)
 
 
 //set up treblle

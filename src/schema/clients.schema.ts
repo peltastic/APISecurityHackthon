@@ -25,11 +25,14 @@ export const updateClientSchema = object({
     email: string().email().optional(),
     companyAddress: string().optional(),
     note: string().optional()
-
+    
+  }),
+  params: object({
+    id: string()
   })
 })
 
 
 export type CreateClientInput = TypeOf<typeof createClientSchema>["body"]
 
-export type UpdateClientInput = TypeOf<typeof updateClientSchema>["body"]
+export type UpdateClientInput = TypeOf<typeof updateClientSchema>

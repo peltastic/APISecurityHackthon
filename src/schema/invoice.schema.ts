@@ -32,8 +32,11 @@ export const updateInvoiceSchema =object({
         draft: boolean().optional(),
         hasClientPaid: boolean().optional(),
         paymentReference: string().optional(),
+    }),
+    params: object({
+        id: string()
     })
 })
 
 export type CreateInvoiceInput = TypeOf<typeof createInvoiceSchema>["body"]
-export type UpdateInvoiceInput = TypeOf<typeof updateInvoiceSchema>["body"]
+export type UpdateInvoiceInput = TypeOf<typeof updateInvoiceSchema>

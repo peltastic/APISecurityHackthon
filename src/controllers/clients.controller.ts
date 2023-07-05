@@ -16,10 +16,11 @@ const createClient = async (
 ) => {
   const body = req.body;
   try {
-    await createClientService(body);
+    const user = await createClientService(body);
     return res.status(201).json({
       success: true,
       message: "Client Created Successfully",
+      user,
     });
   } catch (e) {
     next(e);
@@ -57,9 +58,9 @@ const getAllClients = async (
 };
 
 const getClient = async (req: Request, res: Response, next: NextFunction) => {
-  const id = req.params;
+  const { id } = req.params;
   try {
-    const data: any = await getClientService(id);
+    const data = await getClientService(id);
     return res.status(200).json({
       success: true,
       message: "Data Retrieved Successfully",
@@ -71,12 +72,12 @@ const getClient = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const updateClient = async (
-  req: Request<{}, {}, UpdateClientInput>,
+  req: Request<UpdateClientInput["params"], {}, UpdateClientInput["body"]>,
   res: Response,
   next: NextFunction
 ) => {
   const body = req.body;
-  const id = req.params;
+  const { id } = req.params;
 
   try {
     await updateClientService(body, id);
@@ -89,18 +90,22 @@ const updateClient = async (
   }
 };
 
-const deleteClient = async (req: Request, res: Response, next: NextFunction) => {
-   const id = req.params
+const deleteClient = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const {id} = req.params;
 
-   try {
-     await deleteClientService(id)
-     return res.status(200).json({
+  try {
+    await deleteClientService(id);
+    return res.status(200).json({
       success: true,
       message: "Client Deleted Successfully",
     });
-   } catch (e) {
-    next(e)
-   }
-}
+  } catch (e) {
+    next(e);
+  }
+};
 
 export { createClient, getAllClients, getClient, updateClient, deleteClient };
