@@ -9,6 +9,7 @@ import {
   updateUserOtpUrl,
 } from "../services/auth.service";
 import { generateJwt } from "../utils/jwt";
+import config from "config"
 
 const generateOTP = async (req: Request, res: Response, next: NextFunction) => {
   const { user_id } = req.body;
@@ -26,8 +27,8 @@ const generateOTP = async (req: Request, res: Response, next: NextFunction) => {
     const base32_secret = generateRandomBase32();
 
     let totp = new TOTP({
-      issuer: "test.com",
-      label: "test",
+      issuer: config.get("TOTP_ISSUER"),
+      label: config.get("TOTP_LABEL"),
       algorithm: "SHA1",
       digits: 6,
       period: 15,
@@ -62,8 +63,8 @@ const verifyOTp = async (req: Request, res: Response, next: NextFunction) => {
       });
     }
     let totp = new TOTP({
-      issuer: "test.com",
-      label: "test",
+      issuer: config.get("TOTP_ISSUER"),
+      label: config.get("TOTP_LABEL"),
       algorithm: "SHA1",
       digits: 6,
       period: 15,
@@ -113,8 +114,8 @@ const validateOTP = async (req: Request, res: Response, next: NextFunction) => {
     }
 
     let totp = new TOTP({
-      issuer: "test.com",
-      label: "test",
+      issuer: config.get("TOTP_ISSUER"),
+      label: config.get("TOTP_LABEL"),
       algorithm: "SHA1",
       digits: 6,
       period: 15,
