@@ -46,6 +46,10 @@ useTreblle(app, {
     projectId: config.get('TREBLLE_PROJECT_ID'),
   })
 
+  app.get("/", (req: Request, res: Response) => {
+    return res.send("Welcome")
+  })
+
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/clients", authMiddleware, clientRoutes)
