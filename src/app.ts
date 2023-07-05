@@ -7,7 +7,7 @@ import { useTreblle } from "treblle";
 import errorMiddleware from "./middlewares/error.middleware";
 import authMiddleware from "./middlewares/auth.middleware"
 import { rateLimiter } from "./middlewares/rateLimiter.middleware";
-
+import compression from "compression"
 
 //Import routes
 import userRoutes from "./routes/user.routes"
@@ -31,6 +31,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 const PORT = config.get("PORT") || 8000;
 
 ConnectDB()
+
+app.use(compression())
 
 app.use(express.json())
 
