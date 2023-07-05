@@ -2,10 +2,10 @@ import UserModel from "../models/users.model";
 
 interface IUser {
   name: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   email: string;
   note?: string;
-  companyAddress: string;
+  companyAddress?: string;
   password: string;
 }
 
