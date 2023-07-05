@@ -10,8 +10,9 @@ import {
 } from "../services/auth.service";
 import { generateJwt } from "../utils/jwt";
 import config from "config"
+import { GenerateOtpUrlInput, UpdateOtpEnabledInput } from "../schema/auth.schema";
 
-const generateOTP = async (req: Request, res: Response, next: NextFunction) => {
+const generateOTP = async (req: Request<{},{}, GenerateOtpUrlInput>, res: Response, next: NextFunction) => {
   const { user_id } = req.body;
 
   try {
@@ -52,7 +53,7 @@ const generateOTP = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const verifyOTp = async (req: Request, res: Response, next: NextFunction) => {
+const verifyOTp = async (req: Request<{},{}, UpdateOtpEnabledInput>, res: Response, next: NextFunction) => {
   const { user_id, token } = req.body;
   try {
     const user = await FindUserById(user_id);
@@ -100,7 +101,7 @@ const verifyOTp = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const validateOTP = async (req: Request, res: Response, next: NextFunction) => {
+const validateOTP = async (req: Request<{},{},UpdateOtpEnabledInput>, res: Response, next: NextFunction) => {
   const { user_id, token } = req.body;
   try {
     const user = await FindUserById(user_id);
@@ -152,7 +153,7 @@ const validateOTP = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const disableOtp = async (req: Request, res: Response, next: NextFunction) => {
+const disableOtp = async (req: Request<{},{},UpdateOtpEnabledInput>, res: Response, next: NextFunction) => {
   const { user_id } = req.body;
   try {
     const user = await FindUserById(user_id);
