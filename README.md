@@ -74,5 +74,5 @@ User Routes
 
 # Documentation
 
-The project is hosted treblle [https://www.treblle.com/](https://www.treblle.com/]
+The project is hosted treblle [https://documenter.getpostman.com/view/18368362/2s93zFXyxk](https://documenter.getpostman.com/view/18368362/2s93zFXyxk)
 Treblle is a library that provides monitoring and analytics for applications. It offers features such as performance monitoring, error tracking, request tracing, auto-documentation generation and log aggregation. With Treblle, you can gain insights into the health and performance of your application, identify and debug issues, and track user activity.
