@@ -4,7 +4,7 @@ import  {handleSuccessfulAuth, initiateGoogleAuth} from "../controllers/googleau
 
 const router = express.Router()
 
-router.post("/auth/google", initiateGoogleAuth)
-router.post("/auth/google/redirect", handleSuccessfulAuth)
+router.get("/auth/google", initiateGoogleAuth)
+router.get("/auth/google/redirect", handleSuccessfulAuth)
 
 export default router
