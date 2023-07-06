@@ -52,11 +52,11 @@ Make sure you have the following installed on your machine:
 Please follow these steps to get the project running on your local computer
 
 1. Clone the repository:
-   git clone https://github.com/your-repo/api-security-hackathon.git
+   ```git clone https://github.com/your-repo/api-security-hackathon.git```
 2. cd to project directory
-    cd api-security-hackathon
+    ```cd api-security-hackathon```
 3. install dependencies
-```yarn install``
+ ```yarn install```
 
 ## Configuration
 * Create a .env file in the root directory of the project.
