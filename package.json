@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon --watch './src/**/*' -e ts --exec 'npx ts-node src/index.ts",
+    "start": "node ./dist/src/app.js",
     "dev": "nodemon src/app.ts"
   },
   "engines": {
