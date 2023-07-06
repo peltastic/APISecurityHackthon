@@ -8,8 +8,8 @@ interface ICreateInvoice {
     invoiceDesc?: string,
     dueDate: Date,
     amount: number,
-    draft: boolean,
-    hasClientPaid: boolean,
+    draft?: boolean,
+    hasClientPaid?: boolean,
     paymentReference?: string,
   }
 

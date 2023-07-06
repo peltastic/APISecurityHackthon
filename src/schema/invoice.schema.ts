@@ -5,18 +5,18 @@ export const createInvoiceSchema = object({
         invoiceName: string({
             required_error: "Invoice requires a name"
         }),
-        issueDate: date({
+        issueDate: string({
             required_error: "Invoice issuedate is required",
           }),
         invoiceDesc :string().optional(),
-        dueDate: date({
+        dueDate: string({
             required_error: "Invoice requires a due date",
           }),
         amount: number({
             required_error:"Invoice requires an amount"
         }),
-        draft: boolean().default(false),
-        hasClientPaid: boolean().default(false),
+        draft: boolean().default(false).optional(),
+        hasClientPaid: boolean().default(false).optional(),
         paymentReference: string().optional(),
     })
 })
@@ -25,9 +25,9 @@ export const createInvoiceSchema = object({
 export const updateInvoiceSchema =object({
     body : object({
         invoiceName: string().optional(),
-        issueDate: date().optional(),
+        issueDate: string().optional(),
         invoiceDesc :string().optional(),
-        dueDate: date().optional(),
+        dueDate: string().optional(),
         amount: number().optional(),
         draft: boolean().optional(),
         hasClientPaid: boolean().optional(),
