@@ -88,7 +88,7 @@ const updateInvoice = async (
 };
 
 const deleteInvoice = async (req: Request, res: Response, next: NextFunction) => {
-   const id = req.params
+   const {id} = req.params
 
    try {
      await deleteInvoiceService(id)
