@@ -4,9 +4,9 @@ import { IPagination } from "../interfaces/interfaces";
 
 interface ICreateInvoice {
     invoiceName: string,
-    issueDate: Date,
+    issueDate: string,
     invoiceDesc?: string,
-    dueDate: Date,
+    dueDate: string,
     amount: number,
     draft?: boolean,
     hasClientPaid?: boolean,
@@ -16,9 +16,9 @@ interface ICreateInvoice {
 
 interface IUpdateInvoice {
     invoiceName?: string,
-    issueDate?: Date,
+    issueDate?: string,
     invoiceDesc?: string,
-    dueDate?: Date,
+    dueDate?: string,
     amount?: number,
     draft?: boolean,
     hasClientPaid?: boolean,
