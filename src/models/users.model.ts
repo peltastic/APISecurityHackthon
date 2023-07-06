@@ -20,10 +20,10 @@ interface IUser {
 
 const userSchema = new Schema<IUser>({
   name: { type: String, required: true },
-  phoneNumber: { type: String, required: true, min: 11 },
+  phoneNumber: { type: String,  min: 11 },
   email: { type: String, required: true },
   note: { type: String },
-  companyAddress: { type: String, required: true },
+  companyAddress: { type: String },
   _id: { type: String, default: () => uuidv4()},
   otp_ascii: {type: String},
   otp_auth_url: {type: String},

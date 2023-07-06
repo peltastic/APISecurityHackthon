@@ -1,11 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { CheckEmail, CreateUser, FindEmail } from "../services/users.service";
+
 import {
   CreateUserInput,
   LoginUserInput,
 } from "../schema/users.schema";
 import bcrypt from "bcrypt";
 import { generateJwt } from "../utils/jwt";
+
 
 const createUser = async (
   req: Request<{}, {}, CreateUserInput>,
@@ -88,5 +90,7 @@ const loginUser = async (
     next(e);
   }
 };
+
+
 
 export { createUser, loginUser };

@@ -14,6 +14,7 @@ import userRoutes from "./routes/user.routes"
 import clientRoutes from "./routes/client.routes"
 import invoiceRoutes from "./routes/invoice.routes";
 import authRoutes from "./routes/auth.routes"
+import googleauth from "./routes/googleauth.routes"
 
 const app = express();
 
@@ -65,6 +66,7 @@ useTreblle(app, {
 
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/googleauth", googleauth)
 app.use("/api/v1/clients", authMiddleware, clientRoutes)
 app.use("/api/v1/invoice", authMiddleware, invoiceRoutes)
 
