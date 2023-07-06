@@ -47,45 +47,25 @@ Clients Routes
   
 Google Auth Routes
 
-*POST /auth/google: Initiate Google authentication.
-* POST /auth/google/redirect: Handle successful Google authentication.
+* Get /auth/google: Initiate Google authentication.
+* Get /auth/google/redirect: Handle successful Google authentication.
+
+ 
 Invoice Routes
 
-POST /invoice/create-invoice: Create a new invoice.
-GET /invoice/all: Get all invoices.
-GET /invoice/client/:id: Get a specific invoice by ID.
-DELETE /invoice/client/:id: Delete a specific invoice by ID.
-PUT /invoice/client/:id: Update a specific invoice by ID.
+* POST /invoice/create-invoice: Create a new invoice.
+* GET /invoice/all: Get all invoices.
+* GET /invoice/client/:id: Get a specific invoice by ID.
+* DELETE /invoice/client/:id: Delete a specific invoice by ID.
+* PUT /invoice/client/:id: Update a specific invoice by ID.
+
 User Routes
 
-POST /users/login-user: Login a user.
-POST /users/create-user: Create a new user.
+* POST /users/login-user: Login a user.
+* POST /users/create-user: Create a new user.
 
-Node.js (version >= 14.20.1)
-Yarn (optional, but recommended)
-
-
-
-## Features
-
-- Users can create Accounts and Login
-- Users can create clients and create/send invoices to them
-- Reminders to clients about pending and overdue payments
+# Documentation
+The project is hosted treblle [https://www.treblle.com/](https://www.treblle.com/]
+Treblle is a library that provides monitoring and analytics for applications. It offers features such as performance monitoring, error tracking, request tracing, auto-documentation generation and log aggregation. With Treblle, you can gain insights into the health and performance of your application, identify and debug issues, and track user activity.
 
 
-
-
-
-## Install Locally
-
-Install APISecurityHackthon with npm/yarn
-
-```bash
-  //Navigate to project:
-  cd APISecurityHackthon
-  //Install Project Dependencies:
-  yarn install or npm install
-  // start project server locally:
-  yarn run dev or npm run dev
-```
-    
