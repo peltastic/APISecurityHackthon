@@ -12,7 +12,8 @@ const config = {
     TOTP_ISSUER: process.env.TOTP_ISSUER,
     TOTP_LABEL: process.env.TOTP_LABEL,
     GOOGLE_CLIENT_ID: process.env.your_GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.your_GOOGLE_CLIENT_SECRET
+    GOOGLE_CLIENT_SECRET: process.env.your_GOOGLE_CLIENT_SECRET,
+    GOOGLE_AUTH_REDIRECT_URL: process.env.GOOGLE_AUTH_REDIRECT_URL
 }
 
 export default config

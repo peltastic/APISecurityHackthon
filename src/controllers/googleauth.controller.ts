@@ -18,7 +18,7 @@ const initiateGoogleAuth = async(
   const url = client.generateAuthUrl({
     scope: 'email profile', 
 
-    redirectUri: 'http://localhost:3000/auth/google/redirect',
+    redirectUri: config.get("GOOGLE_AUTH_REDIRECT_URL"),
   });
   res.redirect(url);
 }
