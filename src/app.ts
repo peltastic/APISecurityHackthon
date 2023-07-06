@@ -61,7 +61,9 @@ useTreblle(app, {
   })
 
   app.get("/", (req: Request, res: Response) => {
-    return res.send("Welcome")
+    return res.status(200).json({
+      message: "Welcome!"
+    })
   })
 
 app.use("/api/v1/users", userRoutes)
