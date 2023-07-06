@@ -11,7 +11,8 @@ InvoicePlus is an application that enables freelancers to create, send and recei
 4. Two-Factor Authentication (2FA): Strengthen the security of your invoicePlus account with an additional layer of protection through two-factor authentication. Users can enable 2FA using methods like SMS verification codes or authenticator apps.
 5. Automated Password Generation: invoicePlus automatically generates strong and secure passwords for each uploaded invoice, enhancing data protection and minimizing the risk of unauthorized access.
 6. Advanced Search and Filtering: Find specific invoices quickly using advanced search and filtering options provided by invoicePlus, making it easy to locate and retrieve relevant invoice records.
-7. 
+
+# Application Features
 ### User Authentication:
 
 * Sign up new users.
@@ -110,10 +111,10 @@ User Routes
 The project is hosted treblle [treblle](https://www.treblle.com/)
 Treblle is a library that provides monitoring and analytics for applications. It offers features such as performance monitoring, error tracking, request tracing, auto-documentation generation and log aggregation. With Treblle, you can gain insights into the health and performance of your application, identify and debug issues, and track user activity. Please feel free to access it here [https://app.treblle.com/projects/6d66e3cf-048b-43ed-9a99-bf774f37ea20/documentation](https://app.treblle.com/projects/6d66e3cf-048b-43ed-9a99-bf774f37ea20/documentation)
 
-Contributing
+## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests for any improvements or bug fixes.
 
 
-License
+## License
 This project is licensed under the MIT License.
 
